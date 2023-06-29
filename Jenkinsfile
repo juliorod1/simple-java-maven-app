@@ -3,25 +3,21 @@ pipeline {
   stages {
     stage('stage Build') {
       steps {
-        sh '''export  PATH=/root/apache-maven-3.9.3/bin:$PATH
-echo $PATH
-mvn -v
+        sh '''mvn -v
 mvn -B -DskipTests clean package'''
       }
     }
 
     stage('stage Test') {
       steps {
-        sh '''export  PATH=/root/apache-maven-3.9.3/bin:$PATH
-mvn test'''
+        sh 'mvn test'
         junit 'junit \'target/surefire-reports/*.xml\''
       }
     }
 
     stage('stage Delivery') {
       steps {
-        sh '''sh export  PATH=/root/apache-maven-3.9.3/bin:$PATH
-sh ./simple-java-maven-app/jenkins/scripts/deliver.sh'''
+        sh 'sh ./simple-java-maven-app/jenkins/scripts/deliver.sh'
       }
     }
 
