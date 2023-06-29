@@ -21,7 +21,4 @@ pipeline {
     }
 
   }
-  environment {
-    MVN = '/root/apache-maven-3.9.3/bin'
-  }
 }
