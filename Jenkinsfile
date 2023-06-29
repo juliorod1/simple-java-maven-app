@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('stage Build') {
       steps {
-        sh 'sh /root/apache-maven-3.9.3/bin/mvn -B -DskipTests clean package'
+        sh 'sh $MVN/mvn -B -DskipTests clean package'
       }
     }
 
     stage('stage Test') {
       steps {
-        sh 'sh /root/apache-maven-3.9.3/bin/mvn test'
+        sh 'sh $MVN/mvn test'
         junit 'junit \'target/surefire-reports/*.xml\''
       }
     }
@@ -20,5 +20,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    MVN = '/root/apache-maven-3.9.3/bin'
   }
 }
