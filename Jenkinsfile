@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('stage Build') {
       steps {
-        sh 'sh $MVN/mvn -B -DskipTests clean package'
+        sh 'sh mvn -B -DskipTests clean package'
       }
     }
 
     stage('stage Test') {
       steps {
-        sh 'sh $MVN/mvn test'
+        sh 'sh mvn test'
         junit 'junit \'target/surefire-reports/*.xml\''
       }
     }
