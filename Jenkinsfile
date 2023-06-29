@@ -4,6 +4,7 @@ pipeline {
     stage('stage Build') {
       steps {
         sh '''export  PATH=/root/apache-maven-3.9.3/bin:$PATH
+mvn -v
 mvn -B -DskipTests clean package'''
       }
     }
